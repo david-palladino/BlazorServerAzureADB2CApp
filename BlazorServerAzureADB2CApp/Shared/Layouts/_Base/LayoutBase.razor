@@ -1,0 +1,39 @@
+﻿@inherits LayoutComponentBase
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+@code {
+    protected UserClaims UserClaims { private set; get; }
+        = new UserClaims();
+
+    [Inject]
+    protected NavigationManager Navigation { get; set; }
+
+    /// <remarks>
+    /// Can't use exception handling and error page navigation around this entire method there is a "Microsoft.AspNetCore.Components.NavigationException" exception thrown during the normal process of
+    /// redirecting to the Azure Ad B2C sign in page.  Also if there is a try-catch block added and the user is not signed in yet they see the application screen briefly before they are redirected the
+    /// Azure eB2C sign in page.  If the try-catch block is removed this does not happen.  So the try-catch block is only used in the part of the routine where the user is already authenticated.
+    /// </remarks>
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+
+        if (user.Identity.IsAuthenticated)
+        {
+            try
+            {
+                // Break out user claims:
+                UserClaims.ObjectId = user.Claims.Any(c => c.Type.Contains(UserClaimName.NameIdentifier)) ? user.Claims.FirstOrDefault(c => c.Type.Contains(UserClaimName.NameIdentifier)).Value : null;
+                UserClaims.EmailAddress = user.Claims.Any(c => c.Type.Contains(UserClaimName.Email)) ? user.Claims.FirstOrDefault(c => c.Type.Contains(UserClaimName.Email)).Value : null;
+            }
+            catch
+            {
+                Navigation.NavigateTo(Url.Site.Error, true);
+            }
+        }
+        else
+        {
+            Navigation.NavigateTo(Url.AzureAdB2C.SignIn); // If the user is not logged in, redirect to the Azure Ad B2C sign in page
+        }
+    }
+}

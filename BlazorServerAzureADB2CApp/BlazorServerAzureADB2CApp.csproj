@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-BlazorServerAzureADB2CApp-D50256DC-948A-4C20-BDE2-FDED206F6C1A</UserSecretsId>
+    <WebProject_DirectoryAccessLevelKey>0</WebProject_DirectoryAccessLevelKey>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
+    <PackageReference Include="Microsoft.Identity.Web.UI" Version="1.16.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\css\vendor\mdi\" />
+    <Folder Include="wwwroot\css\vendor\purple-admin\css\" />
+    <Folder Include="wwwroot\css\vendor\purple-admin\fonts\" />
+    <Folder Include="wwwroot\js\vendor\misc\" />
+    <Folder Include="wwwroot\js\vendor\purple-admin\" />
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
+</Project>

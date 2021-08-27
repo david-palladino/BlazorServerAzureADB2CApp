@@ -1,0 +1,12 @@
+﻿<nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row" aria-label="Navigation" tabindex="0">
+    <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+    </div>
+    <div class="navbar-menu-wrapper d-flex align-items-stretch">
+        <NavBarNav UserClaims="UserClaims" />
+    </div>
+</nav>
+
+@code {
+    [Parameter]
+    public UserClaims UserClaims { get; set; }
+}

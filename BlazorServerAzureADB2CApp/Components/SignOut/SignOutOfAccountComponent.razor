@@ -1,0 +1,24 @@
+﻿@inject NavigationManager _navigation
+
+<div>
+    Please wait, signing out...
+</div>
+
+@code {
+    protected override void OnAfterRender(bool firstRender)
+    {
+        try
+        {
+            if (firstRender)
+            {
+                // Call MicrosoftIdentity SignOut which clears the user's session from the browser and then redirects to the signed out page:
+                _navigation.NavigateTo(Url.AzureAdB2C.SignOut, true);
+            }
+        }
+        catch
+        {
+            _navigation.NavigateTo("/error", true);
+        }
+    }
+}
+

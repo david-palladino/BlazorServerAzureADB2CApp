@@ -1,0 +1,22 @@
+[
+  {
+    "outputFileName": "wwwroot/css/vendor.min.css",
+    "inputFiles": [
+      "wwwroot/css/vendor/mdi/css/materialdesignicons.min.css",
+      "wwwroot/css/vendor/purple-admin/css/purple.admin.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/vendor.min.js",
+    "inputFiles": [
+      "wwwroot/js/vendor/misc/misc.js",
+      "wwwroot/js/vendor/purple-admin/purple.admin.hoverable.collapse.js",
+      "wwwroot/js/vendor/purple-admin/purple.admin.misc.js",
+      "wwwroot/js/vendor/purple-admin/purple.admin.off.canvas.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": false
+    }
+  }
+]
